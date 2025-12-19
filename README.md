@@ -49,6 +49,33 @@ Not all platforms receive the same amount of care, due to our limited resources.
 the [iOS app](https://code.videolan.org/videolan/vlc-ios/) are located in different repositories
 than the main one.
 
+# Features & Enhancements
+
+## Dark Mode Support
+**VLC** now features a comprehensive dark mode with the following capabilities:
+
+- **Four Color Schemes**: System (default), Light, Dark, and Noir (B&W) modes with automatic platform detection
+- **Quick Toggle Button**: Easy-access theme switcher in the player's top bar (☀️ Light / 🌙 Dark / ⏺ Noir / ◯ System)
+- **Persistent Settings**: Your theme preference is automatically saved and restored across sessions
+- **Enhanced Colors**: Optimized palette for reduced eye strain, AMOLED-friendly blacks, and better accessibility
+- **Noir (B&W) Mode**: Classic black and white grayscale aesthetic with pure blacks and whites for a film noir look
+- **Grindhouse Mode**: Exploitation film aesthetic with oversaturated colors, high contrast, and bold reds/magentas for a retro grindhouse look
+- **Bubble-Era Mode**: Late-90s pastel aesthetic with soft pinks, whites, and greens for a dreamy, optimistic bubble-era vibe
+- **Platform Support**: System theme detection on Windows (Registry), macOS (Appearance), and Linux (GTK)
+- **Qt 6.8+ Integration**: Full support for Qt's color scheme system for consistent theming
+
+### Usage
+1. **Quick Toggle**: Click the theme icon in the player's top bar to cycle through Light → Dark → Noir → Grindhouse → Bubble-Era → Light modes
+2. **Preferences**: Go to Tools → Preferences → Interface → Color Scheme to select your preferred theme
+3. **System Theme**: Select "System" to automatically follow your OS theme preference
+4. **Noir Mode**: Pure black and white mode for a classic film noir aesthetic
+5. **Grindhouse Mode**: Exploitation film aesthetic with vivid reds, magentas, yellows, and cyan for a retro grindhouse look
+6. **Bubble-Era Mode**: Late-90s pastel aesthetic with soft pinks, blues, greens, and whites for a nostalgic bubble-era feel
+
+For detailed information, see [DARKMODE_FEATURES.md](DARKMODE_FEATURES.md).
+
+---
+
 # Contributing & Community
 
 **VLC** is maintained by a community of people, and VideoLAN is not paying any of them.\

@@ -423,6 +423,59 @@ FocusScope{
         visible: root._showTopBar
 
         Widgets.IconToolButton {
+            id: darkModeButton
+
+            anchors.verticalCenter: parent.verticalCenter
+            visible: true
+            enabled: visible
+            font.pixelSize: VLCStyle.icon_banner
+
+            width: VLCStyle.bannerButton_width
+            height: VLCStyle.bannerButton_height
+
+            text: {
+                const scheme = MainCtx.colorScheme.currentScheme()
+                if (scheme === 1) return VLCIcons.sun // Day mode
+                else if (scheme === 2) return VLCIcons.moon // Night mode
+                else if (scheme === 3) return VLCIcons.record // Noir mode (grayscale/B&W)
+                else if (scheme === 4) return VLCIcons.fire // Grindhouse mode
+                else if (scheme === 5) return VLCIcons.star // Bubble-Era mode
+                else return VLCIcons.contrast // System mode
+            }
+            description: {
+                const scheme = MainCtx.colorScheme.currentScheme()
+                if (scheme === 1) return qsTr("Light Mode")
+                else if (scheme === 2) return qsTr("Dark Mode")
+                else if (scheme === 3) return qsTr("Noir Mode")
+                else if (scheme === 4) return qsTr("Grindhouse Mode")
+                else if (scheme === 5) return qsTr("Bubble-Era Mode")
+                else return qsTr("System Theme")
+            }
+
+            Navigation.parentItem: root
+            Navigation.leftItem: menuSelector.visible ? menuSelector : backBtn
+            Navigation.rightItem: playlistButton
+
+            onClicked: {
+                // Cycle through themes: Light (1) -> Dark (2) -> Noir (3) -> Grindhouse (4) -> Bubble-Era (5) -> Light (1)
+                const currentScheme = MainCtx.colorScheme.currentScheme()
+                if (currentScheme === 1) {
+                    MainCtx.colorScheme.setCurrentIndex(2) // Light -> Dark
+                } else if (currentScheme === 2) {
+                    MainCtx.colorScheme.setCurrentIndex(3) // Dark -> Noir
+                } else if (currentScheme === 3) {
+                    MainCtx.colorScheme.setCurrentIndex(4) // Noir -> Grindhouse
+                } else if (currentScheme === 4) {
+                    MainCtx.colorScheme.setCurrentIndex(5) // Grindhouse -> Bubble-Era
+                } else {
+                    MainCtx.colorScheme.setCurrentIndex(1) // Bubble-Era -> Light (or System -> Light)
+                }
+            }
+
+            onHoveredChanged: root.requestLockUnlockAutoHide(hovered)
+        }
+
+        Widgets.IconToolButton {
             id: menuSelector
 
             anchors.verticalCenter: parent.verticalCenter
@@ -439,7 +492,7 @@ FocusScope{
             checked: contextMenu.shown
 
             Navigation.parentItem: root
-            Navigation.leftItem: backBtn
+            Navigation.leftItem: darkModeButton
             Navigation.rightItem: playlistButton
 
             onClicked: contextMenu.popup(this.mapToGlobal(0, height))
@@ -479,7 +532,7 @@ FocusScope{
             height: VLCStyle.bannerButton_height
 
             Navigation.parentItem: root
-            Navigation.leftItem: menuSelector.visible ? menuSelector : backBtn
+            Navigation.leftItem: menuSelector.visible ? menuSelector : darkModeButton
 
             onClicked: togglePlaylistVisibility()
             Accessible.onToggleAction:togglePlaylistVisibility()

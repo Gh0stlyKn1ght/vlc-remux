@@ -165,6 +165,9 @@ private:
 
     void makeLightPalette();
     void makeDarkPalette();
+    void makeNoirPalette();
+    void makeGrindhousePalette();
+    void makeBubbleEraPalette();
     void makeSystemPalette();
 
 private:

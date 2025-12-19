@@ -22,7 +22,7 @@
 
 ColorSchemeModel::ColorSchemeModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_list {{qtr("System"), ColorScheme::System}, {qtr("Day"), ColorScheme::Day}, {qtr("Night"), ColorScheme::Night}}
+    , m_list {{qtr("System"), ColorScheme::System}, {qtr("Day"), ColorScheme::Day}, {qtr("Night"), ColorScheme::Night}, {qtr("Noir"), ColorScheme::Noir}, {qtr("GH"), ColorScheme::Grindhouse}, {qtr("Bubble"), ColorScheme::BubbleEra}}
     , m_currentIndex {0}
 {
 }

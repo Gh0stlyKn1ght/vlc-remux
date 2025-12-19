@@ -34,7 +34,10 @@ public:
     {
         System,
         Day,
-        Night
+        Night,
+        Noir,
+        Grindhouse,
+        BubbleEra
     };
 
     struct Item
